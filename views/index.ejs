@@ -21,9 +21,9 @@
     
 
       <div class="topnav">
-        <a class="active" href="">Home</a>
+        <a class="active" href="/index">Home</a>
         <a href="/addUser">Add User</a>
-        <a href="/updateUser">Modify User</a>
+        <a href="/addAdmin">Add Admin</a>
       </div>
     
 
@@ -61,7 +61,7 @@
               <a href="/edit/<%=employee[i]._id%>" class="btn border-shadow update">
                 <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
             </a>
-            <a name="deleteBtn" class="btn border-shadow delete" href="" > 
+            <a href="/delete/<%=employee[i]._id%>" name="deleteBtn" class="btn border-shadow delete" href="" > 
                 <span class="text-gradient"><i class="fas fa-times"></i></span>
             </a>
             </th>
