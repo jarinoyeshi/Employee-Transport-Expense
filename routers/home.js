@@ -6,6 +6,8 @@ const Admin = require('../models/admin');
 
 
 
+/*------------------------- Add Routes of all ejs files-------------------------------------- */
+
 
 Router.get('/',(err,res)=>{
     res.render('index');
@@ -28,24 +30,41 @@ Router.get('/show',(err,res)=>{
 })
 
 
-
+/*------------------------- Add User-------------------------------------- */
 // insert data
 Router.post('/add',(req,res)=>{
      
-    const userid = req.body.userid;
-    const firstname = req.body.firstname;
-    const lastname = req.body.lastname;
-    const phoneNumber= req.body.phoneNumber;
-    const email = req.body.email
+    const Employee_ID = req.body.Employee_ID;
+    const Full_Name = req.body.Full_Name;
+    const Job_Title = req.body.Job_Title;
+    const Department= req.body.Department;
+    const Business_Unit = req.body.Business_Unit;
+    const Gender= req.body.Gender;
+    const Age = req.body.Age;
+    const Hire_Date= req.body.Hire_Date;
+    const Annual_Salary = req.body.Annual_Salary;
+    const Bonus_percentage= req.body.Bonus_percentage;
+    const Exit_Date = req.body.Exit_Date;
+    const Email = req.body.Email;
+    const Phone = req.body.Phone
 
-    //console.log(userid, firstname );
+    console.log(Employee_ID, Full_Name,Job_Title,Department,Business_Unit,Gender,Age,Annual_Salary,Bonus_percentage,Exit_Date,Email,Phone );
 
     const club= new Club({
-        userid,
-        firstname,
-        lastname,
-        phoneNumber,
-        email
+        Employee_ID,
+        Full_Name,
+        Job_Title,
+        Department,
+        Business_Unit,
+        Gender,
+        Age,
+        Hire_Date,
+        Annual_Salary,
+        Bonus_percentage,
+        Exit_Date,
+        Email,
+        Phone
+
     })
     club.save(err=>{
         if(err){
@@ -57,6 +76,8 @@ Router.post('/add',(req,res)=>{
     })
 })
 
+
+/*------------------------- Add Admin-------------------------------------- */
 //add Admin
 Router.post('/addadmin',(req,res)=>{
      
@@ -89,7 +110,7 @@ Router.post('/addadmin',(req,res)=>{
 
 
 
-
+/*------------------------- Show data to Index page  -------------------------------------- */
 //find data
 
 Router.get('/index',(req,res)=>{
@@ -126,7 +147,7 @@ Router.post('/login',async(req,res)=>{
            
 })
 
-
+/*------------------------- Update User Data   -------------------------------------- */
 //update data
 
 Router.get('/edit/:id',(req,res)=>{
@@ -150,6 +171,9 @@ Router.post('/edit/:id',(req,res)=>{
     })
 })
 
+
+
+/*------------------------- Delete User data  -------------------------------------- */
 //delete data
 
 Router.get('/delete/:id',(req,res)=>{
@@ -163,7 +187,7 @@ Router.get('/delete/:id',(req,res)=>{
     })
 })
 
-
+/*------------------------- Show from excel file to console [Experiment]-------------------------------------- */
 //show employee from eccel sheet
 
 /*
@@ -201,7 +225,7 @@ for(let i = 0; i < sheets.length; i++)
     information.push(res)
    })
 }
-console.log(information)
+//console.log(information)
 // Printing data
 Router.get('/show',(req,res)=>{
     Club.find((err,docs)=>{

@@ -12,6 +12,7 @@ body {
   .topnav {
     overflow: hidden;
     background-color: #333;
+    
   }
   
   .topnav a {
@@ -95,14 +96,16 @@ body {
   }
   thead{
       background-color: gray;
-      height: 3rem;
-      text-align: end;
+      height: 5rem;
+      text-align: center;
       
   }
   th,tr {
-      width: 150px;
+      width: 10rem;
       text-align: center;
-      border: 2px solid black;
+      padding: 10px;
+      padding-bottom: 10px;
+     
   }
   
   .table-body{
