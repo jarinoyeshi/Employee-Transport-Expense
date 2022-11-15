@@ -1,0 +1,106 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navbar.css">
+     <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css" integrity="sha384-z4tVnCr80ZcL0iufVdGQSUzNvJsKjEtqYZjiQrrYKlpGow+btDHDfQWkFjoaz/Zr" crossorigin="anonymous">
+    <title>Add Vehical Expenditure</title>
+</head>
+<body>
+
+
+      <!--nav bar-->
+
+      <div class="topnav">
+        <a  href="/index">Home</a>
+        <a  href="/addUser">Add User</a>
+        <a class="active" href="/addAdmin">Add Admin</a>
+        <a href="/addVehical">Add Vehical Expenditure</a>
+        <a href="/cost">Fuel Expenditure</a>
+
+      </div>
+
+  <!--nav bar ends-->
+
+    
+    <header>
+        <h1>Add Vehivcal Expenditure</h1>
+    </header>
+
+
+    <form action="/addVehicalExpenditure" method="post">
+
+        <div class="container">
+           <label for="IEmployeeIdD">Employee ID</label>
+            <input type="text" placeholder="Enter a Employee ID" name="EmployeeId">
+
+    
+    
+            <label for="Vehicals">Vehicals</label>
+            <input type="text" placeholder="Enter your Vehicals" name="Vehicals" required>
+
+            <label for="Vehical_type">Vehical type</label>
+            <input type="text" placeholder="Enter your Vehical_type" name="Vehical_type" required>
+
+            <label for="Month">Month</label>
+            <input type="text" placeholder="Enter your Month" name="Month" required>
+
+            <label for="Fuel_type ">Fuel Type</label>
+            <input type="text" placeholder="Enter a Fuel Type" name="Fuel_type " >
+
+            <br>
+            <label for="Meter_start">Meter Start(KM)</label>
+            <br>
+            <input type="text" placeholder="Enter your Meter Start(KM)" name="Meter_start" required>
+    
+            <br>
+            <label for="Meter_end">Meter End(KM)</label>
+            <br>
+            <input type="text" placeholder="Enter your Meter End(KM)" name="Meter_end" required>
+    
+            <br>
+            <label for="Traversal_perday">Traversal Perday(KM)</label>
+            <br>
+            <input type="text" placeholder="Enter your Traversal Perday(KM)" name="Traversal_perday(KM)" required>
+
+            <br>
+            <label for="Fuel_entered_perday">Fuel Entered Perday(Liter)</label>
+            <br>
+            <input type="text" placeholder="Enter your Fuel Entered Perday(Liter)" name="Fuel_entered_perday" required>
+
+            <br>
+            <label for="Days_count">Days Count</label>
+            <br>
+            <input type="text" placeholder="Enter your Days Count" name="Days_count" required>
+
+            <br>
+            <label for="Fuel_cost_perday">Fuel Cost Perday(Taka)</label>
+            <br>
+            <input type="text" placeholder="Enter your Fuel Cost Perday(Taka)" name="Fuel_cost_perday" required>
+
+            
+            <br>
+            <label for="Monthly_cost">Monthly Cost</label>
+            <br>
+            <input type="text" placeholder="Enter your Monthly Cost" name="Monthly_cost" required>
+
+        
+    
+            <br>
+            <br>
+            <a href="/index"><button type="submit" class="button">Submit</button></a>
+
+    
+        </div>
+
+    </form>
+
+</body>
+</html>
+
