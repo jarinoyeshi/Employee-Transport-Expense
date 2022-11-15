@@ -1,6 +1,5 @@
 body {
     margin: 0;
-    background-image: url('..//image//bg2.jpeg');
     font-family: Arial, Helvetica, sans-serif;
   }
   header{
@@ -87,11 +86,11 @@ body {
   }
   
   .full_table{
-    margin: 5rem;
+    margin: 1rem;
   }
   
   .full-table {
-      margin-left: 15rem;
+     
       background-color: rgba(207, 205, 205, 0.623);
   }
   thead{
@@ -101,9 +100,12 @@ body {
       
   }
   th,tr {
-      width: 10rem;
+    height: 5rem;
+      width: 3rem;
       text-align: center;
-      padding: 10px;
+      margin-top: 2rem;
+      
+      padding-top: 10px;
       padding-bottom: 10px;
      
   }
@@ -112,6 +114,76 @@ body {
       background-color: blue;
       color: red;
   }
+
+
+  .card_row{
+    margin-left: 15rem;
+    margin-right: 10rem;
+    padding-left: 10px;
+    padding-right: 10px;
+    
+  }
+
+  .card_border{
+    background-color: rgba(238, 232, 232, 0.918);
+
+  }
+  .card_header{
+    margin-top: 0;
+    background-color: #333;
+    height: 2.4rem;
+    color: #ccc;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 4px 0 2px 8px;
+  }
+  .card_body{
+    padding: 10px 0 10px 5px;
+    border-style: none;
+    margin-right: 10rem;
+  }
+  .form_class{
+    
+    margin-right: 10rem;
+    margin-left: 5%;
+  }
+  .form_control_over{
+    font-weight: 600;
+    font-size: 1.2rem;
+    padding-bottom: 10px;
+  }
+  .form_group{
+    border-style: none;
+    
+   
+  }
+  .submit_button{
+    border-style: none;
+    background-color: #04AA6D;
+    font-weight: 600;
+    height: 3rem;
+    width: 5rem;
+    border-radius: 0.8rem;
+    color: #ccc;
+    font-size: 1.2rem;
+  }
+  .submit_button :hover{
+    background-color: red;
+  }
+/*
+  .card_row{
+    margin-top:125px;
+    margin-left:30%; 
+    margin-right:10%; 
+    width: fit-content;
+  }
+
+  .form_group{
+    margin-left:0; 
+    margin-right:20%; 
+    max-width: 10rem;
+  }
+  */
   
   /* Change styles for span and cancel button on extra small screens 
   @media screen and (max-width: 300px) {

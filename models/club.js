@@ -51,11 +51,11 @@ let clubSchema = new schema({
     },
     Email : {
         type : String,
-        required: true
+        
     },
     Phone : {
         type : String,
-        required: true
+        
     }
    
 })
