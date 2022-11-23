@@ -1,8 +1,10 @@
+
+
 const express=require("express");
 const Router= express.Router();
 const Club = require('../models/club');
 const Admin = require('../models/admin');
-const costV = require('../models/cost');
+const CostV = require('../models/cost');
 var XLSX       = require('xlsx');
 var multer     = require('multer');
 var mongoose   = require('mongoose');
@@ -33,12 +35,12 @@ Router.get('/show',(err,res)=>{
     res.render('show');
 })
 
-Router.get('/cost',(err,res)=>{
-    res.render('cost');
+Router.get('/fuelExpenditure',(err,res)=>{
+    res.render('fuelExpenditure');
 })
 
-Router.get('/addVehical',(err,res)=>{
-    res.render('addVehical');
+Router.get('/addVehicle',(err,res)=>{
+    res.render('addVehicle');
 })
 
 
@@ -174,13 +176,7 @@ Router.post('/addadmin',(req,res)=>{
 
 
 
-/*---------------------add Vehical Expenditure----------------------------------------------- */
-Router.post('/addVehicalExpenditure/:id',(req,res)=>{
- console.log(id);
 
-
-
-})
 
 
 /*------------------------- Show data to Index page  -------------------------------------- */
@@ -196,6 +192,9 @@ Router.get('/index',(req,res)=>{
     })
 })
 
+
+
+/*------------Login code---------- */
 Router.post('/login',async(req,res)=>{
 
     try{
@@ -310,6 +309,93 @@ Router.get('/show',(req,res)=>{
     })
 })
 //console.log(information)
+
+
+
+/*--------------------vehicle Cost calculation section--------------------------------------- */
+/*------------------------------------------------------------------------------------------- */
+/*---------------------add vehicle Expenditure----------------------------------------------- */
+Router.post('/addvehicleExpenditure',(req,res)=>{
+     //console.log(req.params.id);
+
+
+     const EmployeeId= req.body.EmployeeId;
+     const Name= req.body.Name;
+     const Salary = req.body.Salary;
+     const Vehicles= req.body.Vehicles;
+     const Vehicle_type= req.body.Vehicle_type; 
+     const Vehicle_no= req.body.Vehicle_no;
+     const Month = req.body.Month;
+     const Fuel_type= req.body.Fuel_type;
+     const Meter_start=  req.body.Meter_start;
+     const Meter_end= req.body.Meter_end;
+     const Traversal_perday_KM = req.body.Traversal_perday_KM;
+     const Fuel_entered_perday= req.body.Fuel_entered_perday;
+     const Days_count = req.body.Days_count;
+     const Perday_cost = req.body.Perday_cost;
+     const Monthly_cost =req.body.Monthly_cost;
+
+    // console.log(employeeid,name, salary, vehicle, vehicletype, vehicleno, month, fueltype,  metertart, meterend, traversalperday, fuelenteredperday, dayscount, perdaycost, monthlycost )
+     
+     const costv = new CostV({
+            EmployeeId,
+            Name,
+            Salary,
+            Vehicles,
+            Vehicle_type,
+            Vehicle_no,
+            Month,
+            Fuel_type,
+            Meter_start,
+            Meter_end,
+            Traversal_perday_KM,
+            Fuel_entered_perday,
+            Days_count,
+            Perday_cost,
+            Monthly_cost
+
+        })
+        costv.save(err=>{
+         if(err){
+             console.log(err);
+         }else{
+             console.log("Added");
+             res.redirect('/index');
+          }
+         })
+})
+
+/*---------------------Show Fuel Expenditure----------------------------------------------- */
+
+/*
+Router.get('/index',(req,res)=>{
+    Club.find((err,docs)=>{
+        if(err) throw err;
+        
+        res.render('index',{
+            employee: docs
+        })
+    })
+})
+*/
+
+Router.get('/fuelExpenditure',(req,res)=>{
+    CostV.find((err,docs)=>{
+        if(err){
+            throw err;
+        }else{
+            console.log(docs);
+            res.render('fuelExpenditure',{
+                expenditure: docs
+                
+            })
+
+        }
+        
+
+    })
+
+})
 
 
 

@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css" integrity="sha384-z4tVnCr80ZcL0iufVdGQSUzNvJsKjEtqYZjiQrrYKlpGow+btDHDfQWkFjoaz/Zr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
 
-    <title>Vehical Expenditcher</title>
+    <title>vehicle Expenditcher</title>
 </head>
 <body>
 
@@ -23,10 +23,10 @@
 
       <div class="topnav">
         <a  href="/index">Home</a>
-        <a class="active" href="/addUser">Add User</a>
+        <a  href="/addUser">Add User</a>
         <a href="/addAdmin">Add Admin</a>
-        <a href="/addVehical">Add Vehical Expenditure</a>
-        <a href="/cost">Fuel Expenditure</a>
+        <a href="/addVehicle">Add vehicle Expenditure</a>
+        <a class="active" href="/fuelExpenditure">Fuel Expenditure</a>
       </div>
 
 
@@ -35,7 +35,7 @@
 
   
     <header>
-        <h1> Vehical Expenditure</h1>
+        <h1> vehicle Expenditure</h1>
     </header>
 
     <div class="full_table">
@@ -47,8 +47,8 @@
             <th scope="col">Employee ID</th>
             <th scope="col">Full Name</th>
             <th scope="col">Salary</th>
-            <th scope="col">Vehicals</th>
-            <th scope="col">Vehical Type</th>
+            <th scope="col">vehicles</th>
+            <th scope="col">vehicle Type</th>
             <th scope="col">Month</th>
             <th scope="col">Fuel Type </th>
             <th scope="col">Meter Start(KM) </th>
@@ -63,22 +63,23 @@
           
         </thead>
         <tbody>
-          
+          <% for(var i=0; i< expenditure.length; i++) {%>
           <tr>
-            <th scope="row">E35</th>
-            <th scope="col">Ahmed Shaheed </th>
-            <th scope="col">45000</th>
-            <th scope="row">Yes</th>
-            <th scope="col">CNG</th>
-            <th scope="col">August</th>
-            <th scope="col">CNG(Conpressed Natural Gas)</th>
-            <th scope="col">120 Km</th>
-            <th scope="col">500 Km</th>
-            <th scope="col">380 Km</th>
-            <th scope="col">10 Liter </th>
-            <th scope="col">12</th>
-            <th scope="col">1500 Taka</th>
-            <th scope="col">18,000 Taka</th>
+            <th scope="row"><%= expenditure[i].EmployeeId%></th>
+            <th scope="col"><%= expenditure[i].Name%></th>
+            <th scope="col"><%= expenditure[i].Salary%></th>
+            <th scope="row"><%= expenditure[i].Vehicles%></th>
+            <th scope="col"><%= expenditure[i].Vehicle_type%></th>
+            <th scope="col"><%= expenditure[i].Vehicle_no%></th>
+            <th scope="col"><%= expenditure[i].Month%></th>
+            <th scope="col"><%= expenditure[i].Fuel_type%></th>
+            <th scope="col"><%= expenditure[i].Meter_start%></th>
+            <th scope="col"><%= expenditure[i].Meter_end%></th>
+            <th scope="col"><%= expenditure[i].Traversal_perday_KM%></th>
+            <th scope="col"><%= expenditure[i].Fuel_entered_perday%></th>
+            <th scope="col"><%= expenditure[i].Days_count%></th>
+            <th scope="col"><%= expenditure[i].Perday_cost%></th>
+            <th scope="col"><%= expenditure[i].Monthly_cost%></th>
 
             <th>
               <a href="" class="btn border-shadow update">
@@ -90,6 +91,7 @@
             </th>
 
           </tr>
+          <% } %>
 
           
 
