@@ -25,6 +25,7 @@
         <a href="/addUser">Add User</a>
         <a href="/addAdmin">Add Admin</a>
         <a href="/addVehicle">Add vehicle Expenditure</a>
+        <a href="/show">show</a>
         <a href="/fuelExpenditure">Fuel Expenditure</a>
       </div>
     
@@ -90,7 +91,7 @@
              <a href="/addvehicleExpenditure" name="addBtn" class="btn border-shadow delete" href="" > 
                 <span class="text-gradient"><i class="fas fa-times" style="transform: rotate(45deg); color: green;"></i></span>
              </a>
-            <a href="/edit/<%=employee[i]._id%>" class="btn border-shadow update">
+            <a href="/perEmployeeExpenditure/<%=employee[i]._id%>/<%= employee[i].Employee_ID %>" class="btn border-shadow update">
               <span class="text-gradient"><i class="fas fa-street-view"></i></span>
             </a>
             </th>
@@ -104,6 +105,7 @@
           
         </tbody>
       </table>
+      
 
 
 

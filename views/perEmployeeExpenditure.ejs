@@ -35,8 +35,17 @@
 
   
     <header>
-        <h1> vehicle Expenditure</h1>
+        <h1> Per Employee Expenditure </h1>
     </header>
+
+    <h3>Employee Name: </h3>
+    <h3>Employee ID: </h3>
+    <h3>Employee Salary: </h3>
+    <h3>Use of vehicles: </h3>
+    <h3>Vehicle Type: </h3>
+    <h3>Vehicle ID: </h3>
+
+
 
     <div class="full_table">
       <table class="table table-sm">
@@ -44,13 +53,7 @@
         <thead>
           <tr class="table-head" >
             
-            <th scope="col">Employee ID</th>
-            <th scope="col">Full Name</th>
-            <th scope="col">Salary</th>
-            <th scope="col">Uses of vehicles</th>
-            <th scope="col">vehicle Type</th>
-            <th scope="col">vehicle ID</th>
-            <th scope="col">vehicle Number</th>
+
             <th scope="col">Month</th>
             <th scope="col">Fuel Type </th>
             <th scope="col">Meter Start(KM) </th>
@@ -70,13 +73,6 @@
 
           <% for(var i=0; i< expenditure.length; i++) {%>
             <tr>
-              <th scope="row"><%= expenditure[i].Employee%></th>
-              <th scope="col"><%= expenditure[i].Name%></th>
-              <th scope="col"><%= expenditure[i].Salary%></th>
-              <th scope="row"><%= expenditure[i].Vehicles%></th>
-              <th scope="col"><%= expenditure[i].Vehicle_type%></th>
-              <th scope="col"><%= expenditure[i].Vehicle_id%></th>
-              <th scope="col"><%= expenditure[i].Vehicle_no%></th>
               <th scope="col"><%= expenditure[i].Month%></th>
               <th scope="col"><%= expenditure[i].Fuel_type%></th>
               <th scope="col"><%= expenditure[i].Meter_start%></th>

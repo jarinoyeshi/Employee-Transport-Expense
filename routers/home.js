@@ -14,10 +14,11 @@ var mongoose   = require('mongoose');
 
 /*------------------------- Add Routes of all ejs files-------------------------------------- */
 
-
+/*
 Router.get('/',(err,res)=>{
     res.render('index');
 })
+*/
 Router.get('/addUser',(err,res)=>{
     res.render('addUser');
 })
@@ -27,21 +28,29 @@ Router.get('/addAdmin',(err,res)=>{
 Router.get('/edit',(err,res)=>{
     res.render('edit');
 })
+
 Router.get('/login',(err,res)=>{
     res.render('login');
 })
 
+
 Router.get('/show',(err,res)=>{
     res.render('show');
 })
-
+/*
 Router.get('/fuelExpenditure',(err,res)=>{
     res.render('fuelExpenditure');
 })
-
+*/
 Router.get('/addVehicle',(err,res)=>{
     res.render('addVehicle');
 })
+
+/*
+Router.get('/perEmployeeExpenditure',(err,res)=>{
+    res.render('perEmployeeExpenditure');
+})
+*/
 
 
 /*------------------------- Add User-------------------------------------- */
@@ -195,7 +204,7 @@ Router.get('/index',(req,res)=>{
 
 
 /*------------Login code---------- */
-Router.post('/login',async(req,res)=>{
+Router.post('/loginmethod',async(req,res)=>{
 
     try{
 
@@ -319,11 +328,12 @@ Router.post('/addvehicleExpenditure',(req,res)=>{
      //console.log(req.params.id);
 
 
-     const EmployeeId= req.body.EmployeeId;
+     const Employee= req.body.Employee;
      const Name= req.body.Name;
      const Salary = req.body.Salary;
      const Vehicles= req.body.Vehicles;
      const Vehicle_type= req.body.Vehicle_type; 
+     const Vehicle_id= req.body.Vehicle_id; 
      const Vehicle_no= req.body.Vehicle_no;
      const Month = req.body.Month;
      const Fuel_type= req.body.Fuel_type;
@@ -334,15 +344,17 @@ Router.post('/addvehicleExpenditure',(req,res)=>{
      const Days_count = req.body.Days_count;
      const Perday_cost = req.body.Perday_cost;
      const Monthly_cost =req.body.Monthly_cost;
+     const Limit =req.body.Limit;
 
     // console.log(employeeid,name, salary, vehicle, vehicletype, vehicleno, month, fueltype,  metertart, meterend, traversalperday, fuelenteredperday, dayscount, perdaycost, monthlycost )
      
      const costv = new CostV({
-            EmployeeId,
+            Employee,
             Name,
             Salary,
             Vehicles,
             Vehicle_type,
+            Vehicle_id,
             Vehicle_no,
             Month,
             Fuel_type,
@@ -352,7 +364,8 @@ Router.post('/addvehicleExpenditure',(req,res)=>{
             Fuel_entered_perday,
             Days_count,
             Perday_cost,
-            Monthly_cost
+            Monthly_cost,
+            Limit
 
         })
         costv.save(err=>{
@@ -379,22 +392,94 @@ Router.get('/index',(req,res)=>{
 })
 */
 
+/*
+Router.get('/index',(req,res)=>{
+    Club.find((err,docs)=>{
+        if(err) throw err;
+        
+        res.render('index',{
+            employee: docs
+        })
+    })
+})
+*/
+
+
 Router.get('/fuelExpenditure',(req,res)=>{
+
+    
     CostV.find((err,docs)=>{
+        if(err) throw err;
+
+        console.log(docs);
+        res.render('fuelExpenditure',{
+            expenditure: docs
+        })
+        
+   }) 
+})
+
+/*
+Router.get('/edit/:id',(req,res)=>{
+    
+    Club.findByIdAndUpdate({_id: req.params.id},req.body,{new:true},(err,docs)=>{
         if(err){
-            throw err;
+            console.log("cannot update");
+        }else{
+            res.render('edit',{employeedata:docs})
+        }
+    })
+})
+
+Router.post('/edit/:id',(req,res)=>{
+    Club.findByIdAndUpdate({_id: req.params.id},req.body,(err,docs)=>{
+        if(err){
+            console.log("Updatedd");
+        }else{
+            res.redirect('/index')
+        }
+    })
+})
+
+*/
+
+Router.get('/perEmployeeExpenditure/:id/:Employee_ID',(req,res)=>{
+    console.log(req.params.id);
+    let Employee= req.params.Employee_ID;
+    console.log(Employee);
+
+    //console.log(CostV.find({"Employee" : "E02387"}));
+
+    
+
+
+    
+    CostV.find({"Employee" : "Employee"},(err,docs)=>{
+        if(err){
+            console.log(err);
         }else{
             console.log(docs);
-            res.render('fuelExpenditure',{
-                expenditure: docs
-                
-            })
-
+            res.render('perEmployeeExpenditure',{expenditure:docs})
         }
-        
-
     })
+    
+    
 
+
+
+
+
+    /*
+    CostV.find((err,docs)=>{
+        if(err) throw err;
+
+        console.log(docs);
+        res.render('perEmployeeExpenditure',{
+            expenditure: docs
+        })
+        
+   }) 
+   */
 })
 
 
@@ -406,3 +491,38 @@ Router.get('/fuelExpenditure',(req,res)=>{
 
 
 module.exports= Router;
+
+
+
+/*
+<% for(var i=0; i< employee.length; i++) {%>
+<tr>
+  <th scope="row"><%= expenditure[i].EmployeeId%></th>
+  <th scope="col"><%= expenditure[i].Name%></th>
+  <th scope="col"><%= expenditure[i].Salary%></th>
+  <th scope="row"><%= expenditure[i].Vehicles%></th>
+  <th scope="col"><%= expenditure[i].Vehicle_type%></th>
+  <th scope="col"><%= expenditure[i].Vehicle_no%></th>
+  <th scope="col"><%= expenditure[i].Month%></th>
+  <th scope="col"><%= expenditure[i].Fuel_type%></th>
+  <th scope="col"><%= expenditure[i].Meter_start%></th>
+  <th scope="col"><%= expenditure[i].Meter_end%></th>
+  <th scope="col"><%= expenditure[i].Traversal_perday_KM%></th>
+  <th scope="col"><%= expenditure[i].Fuel_entered_perday%></th>
+  <th scope="col"><%= expenditure[i].Days_count%></th>
+  <th scope="col"><%= expenditure[i].Perday_cost%></th>
+  <th scope="col"><%= expenditure[i].Monthly_cost%></th>
+
+  <th>
+    <a href="" class="btn border-shadow update">
+      <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
+  </a>
+  <a href="" name="deleteBtn" class="btn border-shadow delete" href="" > 
+      <span class="text-gradient"><i class="fas fa-times"></i></span>
+  </a>
+  </th>
+
+</tr>
+<% } %>
+
+*/
