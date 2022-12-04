@@ -19,6 +19,10 @@ Router.get('/',(err,res)=>{
     res.render('index');
 })
 */
+
+
+
+
 Router.get('/addUser',(err,res)=>{
     res.render('addUser');
 })
@@ -191,7 +195,8 @@ Router.post('/addadmin',(req,res)=>{
 /*------------------------- Show data to Index page  -------------------------------------- */
 //find data
 
-Router.get('/index',(req,res)=>{
+Router.get('/',(req,res)=>{
+
     Club.find((err,docs)=>{
         if(err) throw err;
         
@@ -199,8 +204,8 @@ Router.get('/index',(req,res)=>{
             employee: docs
         })
     })
-})
 
+})
 
 
 /*------------Login code---------- */
@@ -214,7 +219,14 @@ Router.post('/loginmethod',async(req,res)=>{
         const username= await Admin.findOne({Username:Username});
         
         if(username.Password === Password){
-            res.status(201).render('index');
+            Club.find((err,docs)=>{
+                if(err) throw err;
+                
+                res.render('index',{
+                    employee: docs
+                })
+            })
+            //res.status(201).render('addadmin');
         } else {
             res.send("password not matching");
         }
@@ -247,7 +259,7 @@ Router.post('/edit/:id',(req,res)=>{
         if(err){
             console.log("Updatedd");
         }else{
-            res.redirect('/index')
+            res.redirect('/')
         }
     })
 })
@@ -263,7 +275,7 @@ Router.get('/delete/:id',(req,res)=>{
             console.log("Error occured in deletation");
         }else{
             console.log("deleted");
-            res.redirect('/index');
+            res.redirect('/');
         }
     })
 })
