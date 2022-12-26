@@ -63,20 +63,49 @@ exports.addUser = (req, res) =>{
 }
 
 
-/*===================== Add Data From Excel =================================== */
-exports.add_User_From_Excel = (req, res) =>{
-    res.render('login');
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*===================== Edit Employee =================================== */
+exports.edit= (req,res)=>{
+    
+    Club.findByIdAndUpdate({_id: req.params.id},req.body,{new:true},(err,docs)=>{
+        if(err){
+            console.log(err+" cannot update");
+        }else{
+            res.render('edit',{employeedata:docs})
+            console.log(docs);
+        }
+    })
 }
-/*===================== Edit Employee =================================== 
-exports.edit_user = (req, res) =>{
-    res.render('login');
-}
-*/
-/*===================== Delete Employee =================================== 
-exports.delete_user = (req, res) =>{
-    res.render('login');
-}
-*/
+
+
+
+
+
+
+
+
 
 
 
@@ -105,7 +134,14 @@ exports.addVehicleExpenditure = (req, res) =>{
 
 /*===================== show_fuel_Expenditure =================================== */
 exports.show_fuel_Expenditure = (req, res) =>{
-    res.render('login');
+    
+    CostV.find((err,docs)=>{
+        if(err) throw err;
+        res.render('fuelExpenditure',{
+            expenditure: docs
+        })
+        
+    }) 
 }
 
 
@@ -114,10 +150,7 @@ exports.show_fuel_Expenditure = (req, res) =>{
 
 
 
-/*===================== generate PDF =================================== */
-exports.generatePDF = (req, res) =>{
-    res.render('login');
-}
+
 exports.logout = (req, res) =>{
     res.render('login');
 }
@@ -129,3 +162,6 @@ exports.logout = (req, res) =>{
 }
 
 
+exports.test = (req, res) =>{
+    res.render('test');
+}

@@ -11,6 +11,10 @@ var XLSX       = require('xlsx');
 var multer     = require('multer');
 var mongoose   = require('mongoose');
 
+//generate pdf
+
+const axios = require('axios');
+
 exports.createUser=(req,res)=>{
      
     const Employee_ID = req.body.Employee_ID;
@@ -144,6 +148,157 @@ exports.createVehicleExpenditure=(req,res)=>{
 
 }
 
+/*===================== Delete Employee Admin Expenditure ===================================*/ 
+//Delete User/ Employee
+exports.deleteUser = (req, res) =>{
+    Club.findByIdAndDelete({_id:req.params.id},req.body,(err,docs)=>{
+        if(err){
+            console.log(err+" Error occured in deletation");
+        }else{
+            console.log(" Employee deleted");
+            res.redirect('/');
+        }
+    })
+}
+
+
+//Delete Admin 
+exports.deleteAdmin = (req, res) =>{
+    Admin.findByIdAndDelete({_id:req.params.id},req.body,(err,docs)=>{
+        if(err){
+            console.log(err+" Error occured in deletation");
+        }else{
+            console.log(" Admin deleted");
+            res.redirect('/');
+        }
+    })
+}
 
 
 
+// Delete Expenditure
+exports.deleteVehicleExpenditure = (req, res) =>{
+    CostV.findByIdAndDelete({_id:req.params.id},req.body,(err,docs)=>{
+        if(err){
+            console.log(err+" Error occured in deletation");
+        }else{
+            console.log(" Expenditure deleted");
+            res.redirect('/');
+        }
+    })
+}
+
+
+/*===================== Update Employee Admin Expenditure ===================================*/ 
+
+
+
+
+exports.editUser= (req,res)=>{
+    Club.findByIdAndUpdate({_id: req.params.id},req.body,(err,docs)=>{
+        if(err){
+            console.log(err+" cannot Update");
+        }else{
+            console.log(" Update");
+            res.redirect('/')
+        }
+    })
+}
+
+
+/*===================== generate PDF =================================== */
+exports.generatePDF = async (req, res) =>{
+    try{
+        const employee= await Club.find();
+        const data={
+            employee:employee
+
+        }
+
+
+       const filePath= path.resolve(__dirname,'../views/transport_pdf.ejs');
+        const htmlString = fs.readFileSync(filePath).toString();
+        let option = {
+            format: 'A3'
+        }
+        
+        const ejsData= ejs.render(htmlString, data);
+        pdf.create(ejsData,option).toFile('transport.pdf',(err,response)=>{
+            if(err) console.log("pdf create "+err);
+            console.log("file generated");
+        
+        const downloadPath = path.resolve(__dirname,'../transport.pdf');
+            fs.readFile(downloadPath,(err,file)=>{
+                if(err){
+                    console.log(err);
+                    return res.satus(500).send("couldn't downlad");
+                }
+                console.log("downloaded")
+
+                res.setHeader('Content-Type','application/pdf');
+                res.setHeader('Content-Disposition','attachment;filename="transport.pdf"');
+
+                res.render('../views/test.ejs',file);
+            })
+
+        });
+
+    }catch(error){
+        console.log("catch "+error.message)
+
+    }
+}
+
+
+
+
+exports.downloadPDF = async (req, res) =>{
+
+        
+        const downloadPath = path.resolve(__dirname,'../transport.pdf');
+            fs.readFile(downloadPath,(err,file)=>{
+                if(err){
+                    console.log(err);
+                    return res.satus(500).send("couldn't downlad");
+                }
+                console.log("downloaded")
+
+                res.setHeader('Content-Type','application/pdf');
+                res.setHeader('Content-Disposition','attachment;filename="transport.pdf"');
+
+                
+            })
+
+        };
+
+
+
+
+
+
+/*===================== Add Data From Excel =================================== 
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, './data')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.originalname)
+    }
+  });
+  
+  var upload = multer({ storage: storage });
+  
+ // var News = mongoose.model('member');
+
+
+//var excelModel = mongoose.model('excelData',News);
+
+exports.addUserFromExcel=('/addUserFromExcel',upload.single('excel'),(req,res)=>{
+
+    var workbook =  XLSX.readFile(req.file.path);
+
+    console.log(workbook)
+
+  });
+*/

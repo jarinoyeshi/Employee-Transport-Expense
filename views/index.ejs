@@ -27,6 +27,7 @@
         <a href="/add-Vehicle-Expenditure">Add vehicle Expenditure</a>
         <a href="/show">show</a>
         <a href="/fuelExpenditure">Fuel Expenditure</a>
+        <a href="/generate-fuel-pdf">Download PDF</a>
       </div>
     
 
@@ -80,7 +81,7 @@
             
 
             <th>
-              <a href="/edit/<%=employee[i]._id%>" class="btn border-shadow update">
+              <a href="/edit/<%= employee[i]._id%>" class="btn border-shadow update">
                 <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
             </a>
             <a href="/delete/<%=employee[i]._id%>" name="deleteBtn" class="btn border-shadow delete" href="" > 

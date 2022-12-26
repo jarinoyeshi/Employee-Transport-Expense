@@ -136,12 +136,12 @@ Router.post('/',upload.single('excel'),(req,res)=>{
             if(err){
                 console.log(err);
             }else{
-                //console.log(data);
+                console.log(" Excel data uploaded ");
             }
         })
         x++;
     });
-    res.redirect('/index');
+    res.redirect('/');
   });
 
 
