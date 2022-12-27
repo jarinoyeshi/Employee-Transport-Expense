@@ -34,7 +34,8 @@ var multer     = require('multer');
 //Router.get('/pagename or link name',controller.function);
 
 // function call
-routePath.get('/login',render.loginmethod);
+routePath.get('/login',render.login);
+routePath.post('/login-method',controller.loginmethod);
 routePath.get('/logout',render.logout);
 routePath.get('/',render.showData);
 
@@ -43,40 +44,12 @@ routePath.get('/add-User',render.addUser);
 //routePath.get('/addUserFromExcel',controller.addUserFromExcel);
 //routePath.post('/addUserFromExcel',controller.addUserFromExcel);
 
+routePath.get('/test',render.test);
+//routePath.get('/download-pdf', controller.downloadPDF);
 
 
-/*===============  ADD USER FROM EXCEL ===================== */
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, './data')
-    },
-    filename: function (req, file, cb) {
-      cb(null, file.originalname)
-    }
-  });
-
-  var upload = multer({ storage: storage });
-
-routePath.post('/addUserFromExcel',upload.single('excel'),(req,res)=>{
-    var workbook =  XLSX.readFile(req.file.path);
-    console.log(" path name "+req.file.path) 
-    var sheet_namelist = workbook.SheetNames;
-    var x=0;
-    sheet_namelist.forEach(element => {
-        var xlData = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_namelist[x]]);
-        Club.insertMany(xlData,(err,data)=>{
-            if(err){
-                console.log(err);
-            }else{
-                console.log(" Excel data uploaded ");
-            }
-        })
-        x++;
-    });
-    res.redirect('/');   
-  });
-  /*===============  ADD USER FROM EXCEL ===================== */
-
+// homepage For Admin
+routePath.get('/homepageForAdmin',render.showData);
 
 /*
 routePath.get('/editUser',render.edit_user);
@@ -148,9 +121,43 @@ routePath.post('/edit/:id',(req,res)=>{
 /*=============== EDIT USER ===================== */
 
 
+/*===============  ADD USER FROM EXCEL ===================== */
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, './data')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.originalname)
+    }
+  });
 
-routePath.get('/test',render.test);
-routePath.get('/download-pdf', controller.downloadPDF);
+  var upload = multer({ storage: storage });
+
+routePath.post('/addUserFromExcel',upload.single('excel'),(req,res)=>{
+    var workbook =  XLSX.readFile(req.file.path);
+    console.log(" path name "+req.file.path) 
+    var sheet_namelist = workbook.SheetNames;
+    var x=0;
+    sheet_namelist.forEach(element => {
+        var xlData = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_namelist[x]]);
+        Club.insertMany(xlData,(err,data)=>{
+            if(err){
+                console.log(err);
+            }else{
+                console.log(" Excel data uploaded ");
+            }
+        })
+        x++;
+    });
+    res.redirect('/');   
+  });
+  /*===============  ADD USER FROM EXCEL ===================== */
+
+
+
+
+
+
 
 
 module.exports= routePath;

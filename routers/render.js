@@ -15,30 +15,12 @@ var mongoose   = require('mongoose');
 
 
 /*===================== Login =================================== */
+exports.login = (req, res) =>{
+    res.render('login');
+}
 
-exports.loginmethod = async (req, res) =>{
-    try{
 
-        const Username =req.body.Username;
-        const Password =req.body.Password
-        const username= await Admin.findOne({Username:Username});
-        
-        if(username.Password === Password){
-            Club.find((err,docs)=>{
-                if(err) throw err;             
-                res.render('index',{
-                    employee: docs
-                })
-            })
-            
-        } else {
-            res.send("password not matching");
-        }
-
-    } catch(error){
-        res.status(400).send("Invalid Username");
-    }
-};
+  
 
 
 /*===================== Logout =================================== */
@@ -151,9 +133,6 @@ exports.show_fuel_Expenditure = (req, res) =>{
 
 
 
-exports.logout = (req, res) =>{
-    res.render('login');
-}
 
 
 /*===================== Show Data to Index Page =================================== */

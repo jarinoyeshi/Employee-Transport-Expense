@@ -15,6 +15,45 @@ var mongoose   = require('mongoose');
 
 const axios = require('axios');
 
+
+
+
+/*===================== Login =================================== */
+
+exports.loginmethod = async (req, res) =>{
+    try{
+
+        const Username =req.body.Username;
+        const Password =req.body.Password;
+        const Value = req.body.admin;
+       
+        
+    
+        if(Value==1){        
+            const username= await Admin.findOne({Username:Username});            
+            if(username.Password === Password){
+                Club.find((err,docs)=>{
+                    if(err) throw err;             
+                    res.render('index',{
+                        employee: docs
+                    })
+                })
+                
+            } else {
+                res.send("password not matching");
+            }
+        }else{
+            console.log(" nothing to do")
+        }
+
+        
+
+
+    } catch(error){
+        res.status(400).send("Invalid Username");
+    }
+};
+
 exports.createUser=(req,res)=>{
      
     const Employee_ID = req.body.Employee_ID;
@@ -251,7 +290,7 @@ exports.generatePDF = async (req, res) =>{
 
 
 
-
+/*
 exports.downloadPDF = async (req, res) =>{
 
         
@@ -271,7 +310,7 @@ exports.downloadPDF = async (req, res) =>{
 
         };
 
-
+*/
 
 
 
