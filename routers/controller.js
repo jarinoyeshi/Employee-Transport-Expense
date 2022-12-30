@@ -236,6 +236,40 @@ exports.createVehicleExpenditure=(req,res)=>{
 
 }
 
+/*====================== Create Driver ======================== */
+exports.createDriver=(req,res)=>{
+    const ID= req.body.ID;
+    const Full_Name= req.body.Full_Name;
+    const Transport_id = req.body.Transport_id;
+    const Salary= req.body.Salary;
+    const Hire_date= req.body.Exit_Date; 
+    const Exit_Date= req.body.Vehicle_id; 
+    const Phone= req.body.Phone;
+
+   // console.log(employeeid,name, salary, vehicle, vehicletype, vehicleno, month, fueltype,  metertart, meterend, traversalperday, fuelenteredperday, dayscount, perdaycost, monthlycost )
+    
+    const costv = new CostV({
+           ID,
+           Full_Name,
+           Transport_id,
+           Salary,
+           Hire_date,
+           Exit_Date,
+           Phone,
+           
+       })
+       costv.save(err=>{
+        if(err){
+            console.log(err+" Cannot add driver details");
+        }else{
+            console.log(" Driver details Added ");
+            res.redirect('/');
+         }
+        })
+     
+
+}
+
 /*===================== Delete Employee Admin Expenditure ===================================*/ 
 //Delete User/ Employee
 exports.deleteUser = (req, res) =>{

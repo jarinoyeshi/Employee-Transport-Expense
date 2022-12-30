@@ -118,3 +118,9 @@ exports.logout = (req, res) =>{
 exports.test = (req, res) =>{
     res.render('test');
 }
+
+
+/*===================== Add Driver =================================== */
+exports.addDriver = (req, res) =>{
+    res.render('addDriver');
+}

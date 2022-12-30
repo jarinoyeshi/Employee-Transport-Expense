@@ -42,6 +42,11 @@ routePath.get('/',render.showData);
 
 /*----User-------*/ 
 routePath.get('/add-User',render.addUser);
+
+/*----Driver-------*/ 
+routePath.get('/add-Driver',render.addDriver);
+
+
 //routePath.get('/addUserFromExcel',controller.addUserFromExcel);
 //routePath.post('/addUserFromExcel',controller.addUserFromExcel);
 
@@ -76,6 +81,7 @@ routePath.get('/generate-fuel-pdf',controller.generatePDF);
 routePath.post('/api/users', controller.createUser);
 routePath.post('/api/admins', controller.createAdmin);
 routePath.post('/api/fuels', controller.createVehicleExpenditure);
+routePath.post('/api/driver', controller.createDriver);
 
 //Find function
 //routePath.get('/api/users', controller.findUser);
