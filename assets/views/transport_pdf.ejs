@@ -1,0 +1,101 @@
+
+  
+    <header>
+        <h1> Transport List PDF</h1>
+    </header>
+
+    <div class="full_table">
+      <table class="table table-sm" width="100%">
+      
+        <thead>
+          <tr class="table-head" style="color: green; padding-bottom: 5rem;">
+            
+            <th scope="col">Employee ID</th>
+            <th scope="col">Full Name</th>
+            <th scope="col">Job Title</th>
+            <th scope="col">Department</th>
+            <th scope="col">Business Unit</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Age</th>
+            <th scope="col">Hire Date</th>
+            <th scope="col">Annual Salary</th>
+            <th scope="col">Bonus percentage</th>
+            <th scope="col">Exit Date</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+
+          </tr>
+          
+        </thead>
+
+        <tbody style="padding-top: 5rem;">
+
+          <% for(var i = 0; i < employee.length; i++) { %>
+          <tr>
+            <th scope="row"><%= employee[i].Employee_ID %></th>
+            <th scope="col"><%= employee[i].Full_Name %></th>
+            <th scope="col"><%= employee[i].Job_Title %></th>
+            <th scope="col"><%= employee[i].Department %></th>
+            <th scope="col"><%= employee[i].Business_Unit %></th>
+            <th scope="row"><%= employee[i].Gender %></th>
+            <th scope="col"><%= employee[i].Age %></th>
+            <th scope="col"><%= employee[i].Hire_Date %></th>
+            <th scope="col"><%= employee[i].Annual_Salary %></th>
+            <th scope="col"><%= employee[i].Bonus_percentage %></th>
+            <th scope="col"><%= employee[i].Exit_Date %></th>
+            <th scope="col"><%= employee[i].Email %></th>
+            <th scope="col"><%= employee[i].Phone %></th>
+            
+
+
+
+          </tr>
+
+          <% } %>
+          <br>
+          <br>
+
+
+
+
+ 
+          
+        </tbody>
+      </table>
+      <br><br>
+      <h2>Approval Signetures</h2>
+      <br><br><br><br>
+      <div>
+        <div>
+            <p>------------------------------</p>
+            <h3>Manager 1</h3>
+        </div>
+        <div>
+            <p>------------------------------</p>
+            <h3>Manager 2</h3>
+        </div>
+        <div>
+            <p>------------------------------</p>
+            <h3>Manager 3</h3>
+        </div>
+        <div>
+            <p>------------------------------</p>
+            <h3>Manager 4</h3>
+        </div>
+
+
+
+
+      </div>
+
+
+
+
+      
+
+
+
+    </div>
+
+
+    

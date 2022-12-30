@@ -1,0 +1,199 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  header{
+      text-align: center;
+      margin: 0;
+      padding: 20px 2px 10px;
+  }
+  
+  .topnav {
+    overflow: hidden;
+    background-color: #333;
+    
+  }
+  
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .topnav a.active {
+    background-color: #04AA6D;
+    color: white;
+  }
+  
+  
+  form {
+      border: 3px solid #f1f1f1;
+      margin-left: 15rem;
+      width: 70%;
+  }
+  
+  input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  .cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+  }
+  
+  
+  
+  .container {
+    margin: 10px ;
+    padding: 20px ;
+    
+  }
+  .button{
+      font-size: 1.2rem;
+  }
+  
+  span.psw {
+    float: right;
+    padding-top: 16px;
+  }
+  
+  .full_table{
+    margin: 1rem;
+  }
+  
+  .full-table {
+     
+      background-color: rgba(207, 205, 205, 0.623);
+  }
+  thead{
+      background-color: gray;
+      height: 5rem;
+      text-align: center;
+      
+  }
+  th,tr {
+    height: 5rem;
+      width: 3rem;
+      text-align: center;
+      margin-top: 2rem;
+      
+      padding-top: 10px;
+      padding-bottom: 10px;
+     
+  }
+  
+  .table-body{
+      background-color: blue;
+      color: red;
+  }
+
+
+  .card_row{
+    margin-left: 15rem;
+    margin-right: 10rem;
+    padding-left: 10px;
+    padding-right: 10px;
+    
+  }
+
+  .card_border{
+    background-color: rgba(238, 232, 232, 0.918);
+
+  }
+  .card_header{
+    margin-top: 0;
+    background-color: #333;
+    height: 2.4rem;
+    color: #ccc;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 4px 0 2px 8px;
+  }
+  .card_body{
+    padding: 10px 0 10px 5px;
+    border-style: none;
+    margin-right: 10rem;
+  }
+  .form_class{
+    
+    margin-right: 10rem;
+    margin-left: 5%;
+  }
+  .form_control_over{
+    font-weight: 600;
+    font-size: 1.2rem;
+    padding-bottom: 10px;
+  }
+  .form_group{
+    border-style: none;
+    
+   
+  }
+  .submit_button{
+    border-style: none;
+    background-color: #04AA6D;
+    font-weight: 600;
+    height: 3rem;
+    width: 5rem;
+    border-radius: 0.8rem;
+    color: #ccc;
+    font-size: 1.2rem;
+  }
+  .submit_button :hover{
+    background-color: red;
+  }
+/*
+  .card_row{
+    margin-top:125px;
+    margin-left:30%; 
+    margin-right:10%; 
+    width: fit-content;
+  }
+
+  .form_group{
+    margin-left:0; 
+    margin-right:20%; 
+    max-width: 10rem;
+  }
+  */
+  
+  /* Change styles for span and cancel button on extra small screens 
+  @media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+  }
+  
+  */
