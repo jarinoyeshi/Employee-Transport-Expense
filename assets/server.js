@@ -9,7 +9,7 @@ const dotenv= require('dotenv');
 const path=require('path');
 
 
-const homeRoutes= require('./routers/home');
+const homeRoutes= require('./route/routers');
 //const addUserRoute= require('./routers/home');
 
 

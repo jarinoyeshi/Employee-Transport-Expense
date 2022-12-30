@@ -18,44 +18,91 @@
       <!--nav bar-->
 
       <div class="topnav">
-        <a  href="/index">Home</a>
+        <a  href="/">Home</a>
         <a class="active" href="/addUser">Add User</a>
-        <a href="#">Modify User</a>
+        <a href="/add-Admin">Add Admin</a>
+        <a href="/add-Vehicle-Expenditure">Add vehicle Expenditure</a>
+        <a href="/fuelExpenditure">Fuel Expenditure</a>
       </div>
 
   <!--nav bar ends-->
 
     
     <header>
-        <h1>Add User</h1>
+        <h1>Add Employee</h1>
     </header>
+    <!-- <form action="/addUser" method="post">-->
 
 
-    <form action="/add" method="post">
+    <form action="/api/users" method="post" id="addUser>
 
         <div class="container">
-           <label for="userid">User Id</label>
-            <input type="text" placeholder="Enter a user ID" name="userid" >
+           <label for="Employee_ID">Employee ID</label>
+            <input type="text" placeholder="Enter a user ID" name="Employee_ID" required>
 
-            <label for="firstname">First Name</label>
-            <input type="text" placeholder="Enter your first name" name="firstname" required>
+            <label for="Full_Name">Full Name</label>
+            <input type="text" placeholder="Enter your first name" name="Full_Name" required>
     
-            <label for="lastname">Last Name</label>
-            <input type="text" placeholder="Enter your last name" name="lastname" required>
+            <label for="Job_Title">Job Title</label>
+            <input type="text" placeholder="Enter your Job Title" name="Job_Title" required>
     
-            <label for="phoneNumber">Phone Number</label>
-            <input type="text" placeholder="Enter your phone number" name="phoneNumber" required>
+            <label for="Department">Department</label>
+            <input type="text" placeholder="Enter your Department" name="Department" required>
     
     
-            <label for="email">Email</label>
-            <input type="text" placeholder="Enter your email address" name="email" required>
+            <label for="Business_Unit">Business Unit</label>
+            <input type="text" placeholder="Enter your Business Unit" name="Business_Unit" required>
+
+            <label for="Gender">Gender</label>
+            <input type="text" placeholder="Enter your Gender" name="Gender" required>
+
+            <label for="Age">Age</label>
+            <input type="text" placeholder="Enter your Age" name="Age" required>
+
+            <label for="Hire_Date">Hire Date</label>
+            <input type="text" placeholder="Enter your Hire Date" name="Hire_Date" required>
+
+            <label for="Annual_Salary">Annual Salary</label>
+            <input type="text" placeholder="Enter your Annual_Salary" name="Annual_Salary" required>
+
+            <label for="Bonus_percentage">Bonus percentage</label>
+            <input type="text" placeholder="Enter your Bonus percentage" name="Bonus_percentage">
+
+            <label for="Exit_Date">Exit Date</label>
+            <input type="text" placeholder="Enter your Exit Date" name="Exit_Date">
+
+            <label for="Email">Email</label>
+            <input type="text" placeholder="Enter your email address" name="Email" required>
+
+            <label for="Phone">Phone</label>
+            <input type="text" placeholder="Enter your Phone" name="Phone" required>
+
+
     
-            <a href="/addUser"><button type="submit" class="button">Submit</button></a>
+            <a href="/"><button type="submit" class="button">Submit</button></a>
 
     
         </div>
 
     </form>
+
+
+    <div class="card_row">
+        <div class="card">
+                <div class="card_border" >
+                        <div class="card_header"> Upload Excel File</div>
+                            <div class="card_body" >
+                              <form action="/addUserFromExcel" method="POST" enctype="multipart/form-data" class="form_class">
+                             <div class="form_group">
+                               <label for="excel" class="form_control_over">Browse File</label>
+                               <input type="file" class="form-control" name="excel" required><br><br>
+                               <input type="submit" value="Submit" class="submit_button">
+                             </div>
+                              </form>
+                            </div>
+                        </div>
+                    </div>
+    </div><br><br>
 
 </body>
 </html>
