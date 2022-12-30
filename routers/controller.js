@@ -2,6 +2,7 @@ const express=require("express");
 const Club = require('../models/club');
 const Admin = require('../models/admin');
 const CostV = require('../models/cost');
+const SecondAdmin = require('../models/secondAdmin');
 const Router= express.Router();
 const ejs = require('ejs');
 const pdf = require('html-pdf');
@@ -34,6 +35,21 @@ exports.loginmethod = async (req, res) =>{
             if(username.Password === Password){
                 Club.find((err,docs)=>{
                     if(err) throw err;             
+                    res.render('AdminHome',{
+                        employee: docs
+                    })
+                })
+                
+            } else {
+                res.send("password not matching");
+            }
+
+
+        }else{
+            const username= await SecondAdmin.findOne({Username:Username});         
+            if(username.Password === Password){
+                Club.find((err,docs)=>{
+                    if(err) throw err;             
                     res.render('index',{
                         employee: docs
                     })
@@ -42,15 +58,14 @@ exports.loginmethod = async (req, res) =>{
             } else {
                 res.send("password not matching");
             }
-        }else{
-            console.log(" nothing to do")
         }
 
         
 
 
     } catch(error){
-        res.status(400).send("Invalid Username");
+        //res.status(400).send("Invalid Username");
+        res.redirect('login');
     }
 };
 
@@ -102,32 +117,66 @@ exports.createUser=(req,res)=>{
 
 
 exports.createAdmin=(req,res)=>{
+    const ValueMain = req.body.main;
+    const ValueSecondary = req.body.secondary;
 
-    const ID = req.body.ID;
-    const Name = req.body.Name;
-    const Phone= req.body.Phone;
-    const Email = req.body.Email;
-    const Username = req.body.Username;
-    const Password = req.body.Password
+    if(ValueMain==1){
 
-    //console.log(userid, firstname );
+        const ID = req.body.ID;
+        const Name = req.body.Name;
+        const Phone= req.body.Phone;
+        const Email = req.body.Email;
+        const Username = req.body.Username;
+        const Password = req.body.Password
+    
+        //console.log(userid, firstname );
+    
+        const admin= new Admin({
+            ID,
+            Name,
+            Phone,
+            Email,
+            Username,
+            Password
+        })
+        admin.save(err=>{
+            if(err){
+                console.log(err+" Cannot Add Admin ")
+            }else{
+                console.log("New Admin Added ")
+                res.redirect('/')
+            }
+        })
 
-    const admin= new Admin({
-        ID,
-        Name,
-        Phone,
-        Email,
-        Username,
-        Password
-    })
-    admin.save(err=>{
-        if(err){
-            console.log(err+" Cannot Add Admin ")
-        }else{
-            console.log("New Admin Added ")
-            res.redirect('/')
-        }
-    })
+    }else if(ValueSecondary==0){
+        const ID = req.body.ID;
+        const Name = req.body.Name;
+        const Phone= req.body.Phone;
+        const Email = req.body.Email;
+        const Username = req.body.Username;
+        const Password = req.body.Password
+    
+        //console.log(userid, firstname );
+    
+        const secondadmin= new SecondAdmin({
+            ID,
+            Name,
+            Phone,
+            Email,
+            Username,
+            Password
+        })
+        secondadmin.save(err=>{
+            if(err){
+                console.log(err+" Cannot Add Secondary Admin ")
+            }else{
+                console.log("New Secondary Admin Added ")
+                res.redirect('/')
+            }
+        })
+    }
+
+
      
 
 }

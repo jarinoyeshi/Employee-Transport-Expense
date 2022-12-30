@@ -36,6 +36,15 @@ exports.showData = (req, res) =>{
         })
     })
 }
+/*===================== Show Data to Admin Page =================================== */
+exports.showDataAdmin = (req, res) =>{
+    Club.find((err,docs)=>{
+        if(err) throw err;    
+        res.render('AdminHome',{
+            employee: docs
+        })
+    })
+}
 
 
 
@@ -43,29 +52,6 @@ exports.showData = (req, res) =>{
 exports.addUser = (req, res) =>{
     res.render('addUser');
 }
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*===================== Edit Employee =================================== */
@@ -80,15 +66,6 @@ exports.edit= (req,res)=>{
         }
     })
 }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -129,13 +106,10 @@ exports.show_fuel_Expenditure = (req, res) =>{
 
 
 
-
-
-
-
-
-
-/*===================== Show Data to Index Page =================================== */
+/*===================== Show notification Index Page =================================== */
+exports.notification = (req, res) =>{
+    res.render('notification');
+}
 exports.logout = (req, res) =>{
     res.render('login');
 }

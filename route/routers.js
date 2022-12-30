@@ -39,6 +39,7 @@ routePath.post('/login-method',controller.loginmethod);
 routePath.get('/logout',render.logout);
 routePath.get('/',render.showData);
 
+
 /*----User-------*/ 
 routePath.get('/add-User',render.addUser);
 //routePath.get('/addUserFromExcel',controller.addUserFromExcel);
@@ -49,7 +50,8 @@ routePath.get('/test',render.test);
 
 
 // homepage For Admin
-routePath.get('/homepageForAdmin',render.showData);
+routePath.get('/AdminHome',render.showDataAdmin);
+routePath.get('/notification-window',render.notification);
 
 /*
 routePath.get('/editUser',render.edit_user);
@@ -72,8 +74,8 @@ routePath.get('/generate-fuel-pdf',controller.generatePDF);
 
 //Create function
 routePath.post('/api/users', controller.createUser);
-routePath.post('/api/users', controller.createAdmin);
-routePath.post('/api/users', controller.createVehicleExpenditure);
+routePath.post('/api/admins', controller.createAdmin);
+routePath.post('/api/fuels', controller.createVehicleExpenditure);
 
 //Find function
 //routePath.get('/api/users', controller.findUser);

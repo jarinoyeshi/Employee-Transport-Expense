@@ -30,18 +30,28 @@
 
     
     <header>
-        <h1>Add User</h1>
+        <h1>Add Admin </h1>
     </header>
 
 
-    <form action="/api/users" method="post">
+    <form action="/api/admins" method="post" id="addAdmin">
 
         <div class="container">
-           <label for="ID">User Id</label>
-            <input type="text" placeholder="Enter a user ID" name="ID" >
 
-            <label for="Name">First Name</label>
-            <input type="text" placeholder="Enter your first name" name="Name" required>
+            <h5> Add Admin Type</h5>
+
+            <tr required>  
+                <td> Main Admin: <input type="checkbox" name="main" id="main" class="main" value="1"> </td>  
+                <td> Secondary Admin: <input type="checkbox" name="secondary" id="secondary" class="secondary" value="0"> </td>   
+            </tr> 
+            <br><br>
+
+
+           <label for="ID">Admin Id</label>
+            <input type="text" placeholder="Enter a Admin ID" name="ID" >
+
+            <label for="Name">Full Name</label>
+            <input type="text" placeholder="Enter your full name" name="Name" required>
     
     
             <label for="Phone">Phone Number</label>
