@@ -4,15 +4,14 @@ const schema = mongoose.Schema;
 
 let costschema = new schema({
     Employee: {
-        type: String,  
-        require: true
+        type: Number,  
+        require: true,
+        minlength: 7,
+        maxlength: 7
     },
-    Name: {
-        type: String, 
-        require: true
-    },
+
     Salary: {
-        type: String, 
+        type: Number, 
         require: true
     },
     Vehicles: {
@@ -24,7 +23,7 @@ let costschema = new schema({
         
     },
     Vehicle_id: {
-        type: String, 
+        type: Number, 
         
     },
     Vehicle_no: {
@@ -40,19 +39,19 @@ let costschema = new schema({
         
     },
     Meter_start: {
-        type:String, 
+        type:Number, 
         
     },
     Meter_end: {
-        type:String, 
+        type:Number, 
        
     },
     Traversal_perday_KM: {
-        type:String, 
+        type:Number, 
         
     },
     Fuel_entered_perday: {
-        type:String, 
+        type:Number, 
         
     },
     Days_count: {

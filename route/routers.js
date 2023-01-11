@@ -50,7 +50,7 @@ routePath.get('/add-Driver',render.addDriver);
 //routePath.get('/addUserFromExcel',controller.addUserFromExcel);
 //routePath.post('/addUserFromExcel',controller.addUserFromExcel);
 
-routePath.get('/test',render.test);
+
 //routePath.get('/download-pdf', controller.downloadPDF);
 
 
@@ -163,8 +163,10 @@ routePath.post('/addUserFromExcel',upload.single('excel'),(req,res)=>{
 
 
 
-
-
+routePath.get('/test',render.test);
+routePath.get('/download-pdf',controller.downloadpdf);
+routePath.get('/fuel-calculation',render.fuelCalculation);
+routePath.post('/api/fuelcalculation',controller.addfuelCalculation);
 
 
 

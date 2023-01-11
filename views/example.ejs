@@ -1,0 +1,45 @@
+    <!---------------------------Header---------------------------------------->
+    <%- include( "header-footer/header") %>
+
+    
+    <header>
+        <h1>Add fuel Expenditure</h1>
+    </header>
+
+
+    <form action="/api/fuelcalculation" method="post" id="addfuelCalculation">
+
+        <div class="container">
+           <label for="Employee_Id">Employee ID</label>
+            <input type="number" placeholder="Enter a Employee ID" name="Employee_Id" required>
+
+            <label for="Month_Name">Month</label>
+            <input type="text" placeholder="Enter a Name" name="Month_Name" required>
+
+
+            <label for="Date_name">Date_name</label>
+            <input type="text" placeholder="Enter Date_name" name="Date_name" required>
+
+    
+    
+            <label for="Fuel_Type">Fuel_Type</label>
+            <input type="text" placeholder="Fuel_Type" name="Fuel_Type" >
+
+            <label for="Cost">Cost</label>
+            <input type="text" placeholder="Enter Cost" name="Cost" >
+
+            
+
+        
+    
+            <br>
+            <br>
+            <a href="/"><button type="submit" class="button">Submit</button></a>
+
+    
+        </div>
+
+    </form>
+
+    <!---------------------------Footer---------------------------------------->
+    <%- include("header-footer/footer") %>

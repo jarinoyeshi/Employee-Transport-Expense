@@ -1,8 +1,14 @@
 const express=require("express");
+
+/*----- Adding database table routes ------*/
 const Club = require('../models/club');
 const Admin = require('../models/admin');
 const CostV = require('../models/cost');
 const SecondAdmin = require('../models/secondAdmin');
+const Driver = require('../models/driver');
+const Fuel = require('../models/fuelcost');
+/*-----  database table routes ends ------*/
+
 const Router= express.Router();
 const ejs = require('ejs');
 const pdf = require('html-pdf');
@@ -30,12 +36,19 @@ exports.loginmethod = async (req, res) =>{
        
         
     
-        if(Value==1){        
+        if(Value==1){
+            let Flag= 1; 
+            console.log(Flag);       
             const username= await Admin.findOne({Username:Username});            
             if(username.Password === Password){
                 Club.find((err,docs)=>{
-                    if(err) throw err;             
+                    if(err) throw err; 
+                    /*res.render('header-footer/header',{
+                        flag: Flag,
+                    })  
+                    */          
                     res.render('AdminHome',{
+                        flag: Flag,
                         employee: docs
                     })
                 })
@@ -46,13 +59,21 @@ exports.loginmethod = async (req, res) =>{
 
 
         }else{
+            let Flag=0;
+            console.log(Flag);
             const username= await SecondAdmin.findOne({Username:Username});         
             if(username.Password === Password){
                 Club.find((err,docs)=>{
-                    if(err) throw err;             
+                    if(err) throw err;
+                    /*res.render('header-footer/header',{
+                        flag: Flag,
+                    })   
+                    */          
                     res.render('index',{
+                        flag: Flag,
                         employee: docs
                     })
+
                 })
                 
             } else {
@@ -248,7 +269,7 @@ exports.createDriver=(req,res)=>{
 
    // console.log(employeeid,name, salary, vehicle, vehicletype, vehicleno, month, fueltype,  metertart, meterend, traversalperday, fuelenteredperday, dayscount, perdaycost, monthlycost )
     
-    const costv = new CostV({
+    const driverDB = new Driver({
            ID,
            Full_Name,
            Transport_id,
@@ -258,7 +279,7 @@ exports.createDriver=(req,res)=>{
            Phone,
            
        })
-       costv.save(err=>{
+       driverDB.save(err=>{
         if(err){
             console.log(err+" Cannot add driver details");
         }else{
@@ -348,8 +369,53 @@ exports.generatePDF = async (req, res) =>{
         pdf.create(ejsData,option).toFile('transport.pdf',(err,response)=>{
             if(err) console.log("pdf create "+err);
             console.log("file generated");
+
+
+
+             /*---------------- New Test CODE ----------- 
+
+
+            const filePath = path.resolve(__dirname,'../transport.pdf');
+            console.log(filePath);
+
+            fs.access(filePath, fs.constants.F_OK, (err) => {
+                if (err) {
+                  // File does not exist
+                  res.statusCode = 404;
+                  res.end(`File ${filePath} not found!`);
+                  return;
+                }
+
+                console.log(" File found ");
+            
+                // Read the file and send it as the response
+                //fs.createReadStream(filePath).pipe(res);
+              });
+
+              */
+            
+
+            
+
+
+
+        /*---------------- New Test CODE ----------- */
+           // Send the file ;
+        const file = fs.createReadStream(path.resolve(__dirname,'../transport.pdf'));
         
-        const downloadPath = path.resolve(__dirname,'../transport.pdf');
+        axios.post('/test', file).then(response => {
+                //console.log(response.data);
+                console.log("DATA SENT");
+        });
+        
+
+
+
+
+
+        /* ============= Actual CODE OF DOWNLOAD PDF============== 
+        
+         const downloadPath = path.resolve(__dirname,'../transport.pdf');
             fs.readFile(downloadPath,(err,file)=>{
                 if(err){
                     console.log(err);
@@ -362,6 +428,8 @@ exports.generatePDF = async (req, res) =>{
 
                 res.render('../views/test.ejs',file);
             })
+            */
+            
 
         });
 
@@ -369,6 +437,11 @@ exports.generatePDF = async (req, res) =>{
         console.log("catch "+error.message)
 
     }
+}
+
+
+exports.downloadpdf = async (req, res) =>{
+
 }
 
 
@@ -424,3 +497,81 @@ exports.addUserFromExcel=('/addUserFromExcel',upload.single('excel'),(req,res)=>
 
   });
 */
+
+
+
+/*====================== Create fuel calculation new ======================== */
+exports.addfuelCalculation=(req,res)=>{
+    /*
+
+    Fuel.create({
+        Employee_Id: req.body.Employee_Id,
+        Month: {
+            Month_Name: req.body.Month_Name,
+            Date: {
+                 Date_name: req.body.Date_name,
+                 Fuel_Type: req.body.Fuel_Type,
+                 Cost: req.body.Cost
+            },
+        },
+        
+
+    });
+    
+    try {
+        Fuel.save()
+        res.redirect('/');
+    } catch (err) {
+        console.log(err);
+    }
+    */
+
+    
+    const Employee_Id= Number(req.body.Employee_Id);
+    const Month_Name= req.body.Month_Name;
+    const Date_name= Number(req.body.Date_name);
+    const Meter_start= Number(req.body.Meter_start);
+    const Meter_end= Number(req.body.Meter_end);
+    const Fuel_type= req.body.Fuel_type;
+    const Fuel_cost= Number(req.body.Fuel_cost)
+
+    console.log(Date_name+Fuel_cost);
+
+
+   console.log(Employee_Id,Month_Name, Date_name,Meter_start,Meter_end, Fuel_type, Fuel_cost)
+    
+    const fuel = new Fuel({
+           Employee_Id,
+           Month:{
+            Month_Name,
+            Date:{
+                Date_data:{
+                    Date_name,
+                    Meter_start,
+                    Meter_end,
+                    Fuel_detail:{
+                        Fuel_type,
+                        Fuel_cost
+
+                    }
+
+                }
+
+            }
+
+           },
+
+           
+       })
+       fuel.save(err=>{
+        if(err){
+            console.log(err+" Cannot add fuel details");
+        }else{
+            console.log(" fuel details Added ");
+            res.redirect('/');
+         }
+        })
+        
+     
+
+}

@@ -6,7 +6,9 @@ let clubSchema = new schema({
     Employee_ID: {
         type : String,
         unique: true,
-        required: true
+        required: true,
+        minlength: 7,
+        maxlength: 7
         
     }, 
     Full_Name : {

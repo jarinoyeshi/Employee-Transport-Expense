@@ -1,32 +1,5 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/navbar.css">
-     <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css" integrity="sha384-z4tVnCr80ZcL0iufVdGQSUzNvJsKjEtqYZjiQrrYKlpGow+btDHDfQWkFjoaz/Zr" crossorigin="anonymous">
-    <title>Add vehicle Expenditure</title>
-</head>
-<body>
-
-
-      <!--nav bar-->
-
-      <div class="topnav">
-        <a href="/">Home</a>
-        <a href="/add-User">Add User</a>
-        <a href="/add-Admin">Add Admin</a>
-        <a class="active" href="/add-Vehicle-Expenditure">Add vehicle Expenditure</a>
-        <a href="/fuelExpenditure">Fuel Expenditure</a>
-
-      </div>
-
-  <!--nav bar ends-->
+    <!---------------------------Header---------------------------------------->
+    <%- include( "header-footer/header") %>
 
     
     <header>
@@ -38,7 +11,7 @@
 
         <div class="container">
            <label for="Employee">Employee ID</label>
-            <input type="text" placeholder="Enter a Employee ID" name="Employee" required>
+            <input type="number" placeholder="Enter a Employee ID" name="Employee" pattern="\d{7}" required>
 
             <label for="Name">Name</label>
             <input type="text" placeholder="Enter a Name" name="Name" required>
@@ -112,13 +85,12 @@
     
             <br>
             <br>
-            <a href="/index"><button type="submit" class="button">Submit</button></a>
+            <a href="/"><button type="submit" class="button">Submit</button></a>
 
     
         </div>
 
     </form>
 
-</body>
-</html>
-
+    <!---------------------------Footer---------------------------------------->
+    <%- include("header-footer/footer") %>

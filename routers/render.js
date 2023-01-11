@@ -124,3 +124,9 @@ exports.test = (req, res) =>{
 exports.addDriver = (req, res) =>{
     res.render('addDriver');
 }
+
+
+/*===================== Add calculation =================================== */
+exports.fuelCalculation = (req, res) =>{
+    res.render('fuelCalculation');
+}
